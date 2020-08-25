@@ -5,7 +5,13 @@ class AuthService {
   User _userFromFirebaseUser(FirebaseUser user){
     return user !=null ? User(uid: user.uid) : null;
   }
-  // ignore: non_constant_identifier_names
+  //create stream to map user signed in or not
+  Stream<User> get user {
+    return _auth.onAuthStateChanged
+        //.map((FirebaseUser user) => _userFromFirebaseUser(user));
+      .map(_userFromFirebaseUser);
+  }
+  // sign in Anon
   Future SigninAnon () async {
       try{
         AuthResult result = await _auth.signInAnonymously();
