@@ -1,6 +1,8 @@
 
 import 'package:coffee_team/screens/authenticate/authenticate.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:coffee_team/models/user.dart';
 
 import 'home/home.dart';
 
@@ -10,8 +12,11 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
+
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
+    print(user);
     return Authenticate();
   }
 }
