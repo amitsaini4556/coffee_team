@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:coffee_team/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
   String email = '';
   String password = '';
@@ -16,7 +15,7 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        title: Text('SignIn to Coffee Cafe'),
+        title: Text('SignUp to Coffee Cafe'),
         backgroundColor: Colors.brown[400],
 
       ),
@@ -43,7 +42,7 @@ class _SignInState extends State<SignIn> {
                 onPressed: (){},
                 color: Colors.brown[400],
                 child: Text(
-                  'sign in',
+                  'Register',
                   style: TextStyle(
                     color: Colors.white,
                   ),
