@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:coffee_team/services/auth.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleview;
+  SignIn( { this.toggleview });
   @override
   _SignInState createState() => _SignInState();
 }
@@ -18,6 +20,15 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         title: Text('SignIn to Coffee Cafe'),
         backgroundColor: Colors.brown[400],
+        actions: <Widget>[
+          FlatButton.icon(
+            icon: Icon(Icons.person),
+            label: Text('Register'),
+            onPressed: () {
+              widget.toggleview();
+            },
+          )
+        ],
 
       ),
       body: Container(
