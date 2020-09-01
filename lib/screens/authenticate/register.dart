@@ -40,6 +40,17 @@ class _RegisterState extends State<Register> {
             children: <Widget>[
               SizedBox(height: 20.0,),
               TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  fillColor: Colors.white,
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white,width: 2.0)
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.brown[400],width: 2.0)
+                  )
+                  ),
                 validator: (val) => val.isEmpty ? 'Enter an email' : null,
                 onChanged: (val){
                   setState(() => email = val);
