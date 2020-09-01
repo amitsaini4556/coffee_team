@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:coffee_team/services/auth.dart';
+import 'package:coffee_team/sharedData/contants.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleview;
@@ -38,12 +39,14 @@ class _SignInState extends State<SignIn> {
             children: <Widget>[
               SizedBox(height: 20.0,),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
                 onChanged: (val){
                   setState(() => email = val);
                 },
               ),
               SizedBox(height: 20.0,),
               TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Password'),
                 obscureText: true,
                 onChanged: (val){
                   setState(() => password = val);
