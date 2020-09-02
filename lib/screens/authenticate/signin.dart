@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:coffee_team/services/auth.dart';
 import 'package:coffee_team/sharedData/contants.dart';
+import 'package:coffee_team/sharedData/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleview;
@@ -16,9 +17,10 @@ class _SignInState extends State<SignIn> {
   String email = '';
   String password = '';
   String error = '';
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading ? Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         title: Text('SignIn to Coffee Cafe'),
@@ -61,11 +63,14 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 onPressed: () async {
                   if (_formkey.currentState.validate()) {
+                    setState(() => loading = true );
                     dynamic result = await _auth.signInEmailandPassword(
                         email, password);
                     if (result == null) {
-                      setState(() =>
-                      error = '*could not sign in with those credentials.');
+                      setState(() {
+                        error = '*could not sign in with those credentials.';
+                        loading = false;
+                      });
                     }
                   }
                 },
