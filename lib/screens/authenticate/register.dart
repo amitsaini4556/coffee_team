@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:coffee_team/services/auth.dart';
 import 'package:coffee_team/sharedData/contants.dart';
+import 'package:coffee_team/sharedData/loading.dart';
 
 class Register extends StatefulWidget {
   final Function toggleview;
@@ -15,9 +16,10 @@ class _RegisterState extends State<Register> {
   String email = '';
   String password = '';
   String error = '';
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading  ? Loading() : Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         title: Text('SignUp to Coffee Cafe'),
@@ -61,10 +63,14 @@ class _RegisterState extends State<Register> {
                 onPressed: () async {
                   if(_formkey.currentState.validate())
                     {
+                      setState(() => loading = true );
                       dynamic result = await _auth.registerEmailandPassword(email,password);
                       if(result == null)
                         {
-                          setState(() => error = '*Please supply a valid email.');
+                          setState(() {
+                            error = '*Please supply a valid email.';
+                            loading = false;
+                          });
                         }
                     }
                 },
