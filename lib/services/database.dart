@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class DataBase {
 
   String uid;
@@ -13,5 +12,9 @@ class DataBase {
       'name' : name,
       'strength' :strength
     });
+  }
+
+  Stream<QuerySnapshot> get customers {
+    return _customer.snapshots();
   }
 }
