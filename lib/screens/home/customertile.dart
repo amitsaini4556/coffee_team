@@ -12,10 +12,19 @@ class CustomerTile extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(20.0, 6.0, 20.0, 0.0),
         child: ListTile(
           leading: CircleAvatar(
-            radius: 25.0,
+            radius: 30.0,
+            backgroundColor: Colors.brown,
+            child: CircleAvatar(
+              radius:25.0 ,
             backgroundColor: Colors.brown[customer.strength],
+            )
           ),
-          title: Text(customer.name),
+          title: Text(
+              customer.name,
+            style: TextStyle(
+              letterSpacing: 1.0,
+            ),
+          ),
           subtitle: Text('Takes ${customer.sugars} sugar(s) '),
         ),
       ),
