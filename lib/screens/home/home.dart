@@ -10,6 +10,14 @@ class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    void _showBottomSetting (){
+      showModalBottomSheet(context: context, builder: (context){
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 20.0),
+          child: Text('Something here'),
+        );
+      });
+    }
     return StreamProvider<List<Customer>>.value(
       value: DataBase().customers,
       child: Scaffold(
@@ -26,6 +34,11 @@ class Home extends StatelessWidget {
                 icon: Icon(Icons.person),
                 label: Text('logout')
             ),
+            FlatButton.icon(
+                onPressed: () => _showBottomSetting(),
+                icon: Icon(Icons.settings),
+                label: Text('settings'),
+            )
           ],
 
         ),
