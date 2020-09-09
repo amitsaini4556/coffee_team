@@ -1,4 +1,5 @@
 import 'package:coffee_team/models/customer.dart';
+import 'package:coffee_team/screens/home/settings.dart';
 import 'package:coffee_team/services/auth.dart';
 import 'package:coffee_team/services/database.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +14,8 @@ class Home extends StatelessWidget {
     void _showBottomSetting (){
       showModalBottomSheet(context: context, builder: (context){
         return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0,vertical: 20.0),
-          child: Text('Something here'),
+          padding: EdgeInsets.symmetric(horizontal: 60.0,vertical: 20.0),
+          child: BottomSettings(),
         );
       });
     }
