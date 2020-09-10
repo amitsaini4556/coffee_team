@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_team/models/customer.dart';
+import 'package:coffee_team/models/user.dart';
 class DataBase {
 
   String uid;
@@ -24,8 +25,23 @@ class DataBase {
       );
     }).toList();
   }
+
+  UserData _customerDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.data['name'],
+      sugars: snapshot.data['sugars'],
+      strength: snapshot.data['strength'],
+    );
+  }
+
   Stream<List<Customer>> get customers {
     return _customer.snapshots()
         .map( _customerFromSnapshot);
+  }
+
+  Stream<UserData> get userData {
+    return _customer.document(uid).snapshots()
+          .map( _customerDataFromSnapshot);
   }
 }
